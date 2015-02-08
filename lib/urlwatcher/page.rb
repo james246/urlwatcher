@@ -19,6 +19,6 @@ class Page
   end
 
   def document
-    @document ||= Nokogiri::HTML(get_html)
+    @document = Nokogiri::HTML(get_html)
   end
 end
