@@ -38,11 +38,11 @@ config = {
   }
 }
 
-# The `document` variable passed into the block is a Nokogiri::HTML object. Use selectors on it to find the markup you're
-# looking for and return true or false depending on whether you find it or not. An email notification will be sent the
-# first time the block returns true, at which time the program will also terminate.
+# The `document` variable passed into the block is a Nokogiri::HTML object. Use selectors on it
+# to find the markup you're looking for and return true or false depending on whether you find
+# it or not. The first time the block returns true, an email notification will be sent and
+# the program will terminate.
 w = URLWatcher::Watcher.new(config) do |document|
-
   document.css('.the-div-i-am-seeking').length > 0
 end
 
@@ -50,9 +50,9 @@ Daemons.daemonize({
   :app_name => 'myURLWatcher',
 
   # set logging options to capture STDOUT from URLWatcher if you wish
-  :log_output => true, 
-  :dir_mode => :normal,
-  :dir => File.expand_path(File.dirname(__FILE__))
+  log_output: true, 
+  dir_mode: :normal,
+  dir: File.expand_path(File.dirname(__FILE__))
 })
 
 w.start
