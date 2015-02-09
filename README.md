@@ -3,6 +3,8 @@ URLWatcher
 
 Watch a URL for the presence or absence of some markup. An email notification is sent upon detection, using supplied mail server credentials.
 
+Useful for checking if a web page changes in some way, like an shop item coming back in stock. Works best when daemonized, checking away in the background at regular intervals.
+
 Usage example
 -------------
 
