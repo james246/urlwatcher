@@ -9,6 +9,7 @@ class URLWatcher
     @interval = @config['interval']
 
     @matcher  = matcher
+    @logger   = Logger.new(STDOUT)
     @page     = Page.new(@config['url'])
     @notifier = Notifier.new(@config['notification_recipient_email'], @config['url'], @config['mail'])
   end
@@ -16,7 +17,7 @@ class URLWatcher
   def start
     loop do
       if @done
-        STDOUT.puts 'Terminating...'
+        @logger.info 'Terminating...'
         break 
       end
 
@@ -26,9 +27,9 @@ class URLWatcher
   end
 
   def check
-    STDOUT.puts 'Checking...'
+    @logger.info 'Checking...'
     if matches?
-      STDOUT.puts 'Found a match'
+      @logger.info 'Found a match'
       notify!
     end
   end
@@ -41,7 +42,7 @@ class URLWatcher
     from = @config['mail']['user_name']
     to   = @config['notification_recipient_email']
     
-    STDOUT.puts "Sending notification to #{to} from #{from}"
+    @logger.info "Sending notification to #{to} from #{from}"
 
     @notifier.deliver_success_notification!(from, to, "Match found on: #{@page.url}")
     @done = true
