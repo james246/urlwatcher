@@ -10,7 +10,7 @@ Usage example
 
 Using URLWatcher in conjunction with the [Daemons gem](https://github.com/thuehlinger/daemons):
 
-```
+```ruby
 require 'urlwatcher'
 require 'daemons'
 
