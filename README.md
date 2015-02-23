@@ -15,12 +15,12 @@ require 'urlwatcher'
 require 'daemons'
 
 config = {
-  url: 'https://github.com/james246/urlwatcher',
+  url: "https://github.com/james246/urlwatcher",
 
   # interval at which to scrape url, in seconds
   interval: 60, 
   
-  notification_recipient_email: james@supercoolemail.com,
+  notification_recipient_email: "james@supercoolemail.com",
   
   mail: {
     # e.g. smtp.supercoolemail.com
